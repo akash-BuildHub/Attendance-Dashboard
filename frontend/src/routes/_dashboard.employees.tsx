@@ -1,6 +1,6 @@
 ﻿import { createFileRoute } from "@tanstack/react-router";
 import { useDeferredValue, useEffect, useMemo, useState } from "react";
-import { Plus, Download, Search, Pencil, Trash2, Eye, EyeOff } from "lucide-react";
+import { Plus, Download, Search, Pencil, Trash2, Eye, EyeOff, Users } from "lucide-react";
 import { PageHeader } from "@/components/dashboard/PageHeader";
 import { mockEmployees, type Employee } from "@/data/mockEmployees";
 import { Button } from "@/components/ui/button";
@@ -203,6 +203,7 @@ function EmployeesPage() {
     <div className="space-y-6">
       <PageHeader
         title="Employee Management"
+        icon={<Users className="h-5 w-5 text-primary" />}
         actions={
           <div className="flex gap-2">
             <Button variant="outline" size="sm">

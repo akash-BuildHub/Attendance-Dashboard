@@ -37,7 +37,7 @@ function AlertsPage() {
 
   return (
     <div className="space-y-6">
-      <PageHeader title="Alerts & Automation" />
+      <PageHeader title="Alerts & Automation" icon={<Bell className="h-5 w-5 text-primary" />} />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         <Card className="lg:col-span-2 animate-fade-in-up">

@@ -53,7 +53,7 @@ function RequestsPage() {
 
   return (
     <div className="space-y-6">
-      <PageHeader title="Requests & Notifications" />
+      <PageHeader title="Requests & Notifications" icon={<MessageSquare className="h-5 w-5 text-primary" />} />
 
       <Card className="animate-fade-in-up">
         <CardContent className="pt-6 space-y-4">

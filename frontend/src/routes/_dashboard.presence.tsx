@@ -350,59 +350,69 @@ function PresencePage() {
       <PageHeader title="Attendance History" icon={<Calendar className="h-5 w-5 text-primary" />} />
 
       {/* Employee history section */}
-      <Card className="animate-fade-in-up">
-        <CardContent className="space-y-2">
+      <Card className={cn("animate-fade-in-up", !hasSelectedEmployee && "min-h-[420px]")}>
+        <CardContent className="space-y-3">
           {/* Filters */}
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <div className="flex flex-wrap items-center gap-2 md:flex-nowrap">
+          <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
+            <div className="flex flex-wrap items-center gap-3">
               <Filter className="h-4 w-4 text-muted-foreground" />
-              <span className="text-sm font-medium text-slate-600">Employees:</span>
-              <Select value={selectedEmployee} onValueChange={setSelectedEmployee}>
-                <SelectTrigger className="h-9 w-[180px]">
-                  <SelectValue placeholder="Select employee" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="none">Select Employee</SelectItem>
-                  {employeesForSelectedCompany.map((emp) => (
-                    <SelectItem key={emp.employeeId} value={emp.employeeId}>
-                      {emp.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <span className="text-sm font-medium text-slate-600">Companies:</span>
-              <Select value={selectedCompany} onValueChange={setSelectedCompany}>
-                <SelectTrigger className="h-9 w-[180px]">
-                  <SelectValue placeholder="Select company" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Companies</SelectItem>
-                  {companyOptions.map((company) => (
-                    <SelectItem key={company} value={company}>
-                      {company}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <span className="text-sm font-medium text-slate-600">Choose Date:</span>
-              <Input
-                type="date"
-                className="h-9 w-[160px]"
-                value={selectedDate}
-                onChange={(e) => {
-                  const nextDate = e.target.value;
-                  setSelectedDate(nextDate);
-                  if (nextDate) {
-                    const [year, month] = nextDate.split("-").map(Number);
-                    setCalendarMonth(new Date(year, month - 1, 1));
-                  }
-                }}
-              />
+
+              <div className="flex items-center gap-2">
+                <span className="whitespace-nowrap text-sm font-medium leading-none text-slate-600">Employees:</span>
+                <Select value={selectedEmployee} onValueChange={setSelectedEmployee}>
+                  <SelectTrigger className="h-10 w-[260px]">
+                    <SelectValue placeholder="Select employee" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="none">Select Employee</SelectItem>
+                    {employeesForSelectedCompany.map((emp) => (
+                      <SelectItem key={emp.employeeId} value={emp.employeeId}>
+                        {emp.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <span className="whitespace-nowrap text-sm font-medium leading-none text-slate-600">Companies:</span>
+                <Select value={selectedCompany} onValueChange={setSelectedCompany}>
+                  <SelectTrigger className="h-10 w-[240px]">
+                    <SelectValue placeholder="Select company" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Companies</SelectItem>
+                    {companyOptions.map((company) => (
+                      <SelectItem key={company} value={company}>
+                        {company}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <span className="whitespace-nowrap text-sm font-medium leading-none text-slate-600">Choose Date:</span>
+                <Input
+                  type="date"
+                  className="h-10 w-[220px]"
+                  value={selectedDate}
+                  onChange={(e) => {
+                    const nextDate = e.target.value;
+                    setSelectedDate(nextDate);
+                    if (nextDate) {
+                      const [year, month] = nextDate.split("-").map(Number);
+                      setCalendarMonth(new Date(year, month - 1, 1));
+                    }
+                  }}
+                />
+              </div>
             </div>
+
             <Button
               size="sm"
               variant="outline"
-              className="h-9 gap-1.5 px-3"
+              className="h-10 shrink-0 gap-1.5 px-4 self-start xl:self-auto"
               onClick={handleExportReport}
               disabled={!hasSelectedEmployee}
             >
@@ -412,7 +422,7 @@ function PresencePage() {
           </div>
 
           {!hasSelectedEmployee ? (
-            <div className="rounded-xl border border-dashed border-slate-300 bg-slate-50/70 p-5 text-center">
+            <div className="flex min-h-[240px] flex-col items-center justify-center rounded-xl border border-dashed border-slate-300 bg-slate-50/70 p-5 text-center">
               <p className="text-sm font-medium text-slate-700">Attendance calendar is hidden by default.</p>
               <p className="mt-1 text-sm text-slate-500">
                 Choose an employee to view the attendance calendar and detailed report.

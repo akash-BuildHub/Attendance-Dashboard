@@ -26,8 +26,8 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
 
   return (
-    <div className="relative h-screen overflow-hidden bg-white">
-      <div className="mx-auto flex h-full max-w-[1680px] gap-3 px-3 py-3 md:gap-4 md:px-4 md:py-4">
+    <div className="relative h-screen overflow-hidden bg-[#f3f5f8]">
+      <div className="mx-auto flex h-full max-w-[1680px] gap-0 px-3 py-3 md:px-4 md:py-4">
         <div className="relative z-10 flex h-full w-[78px] shrink-0 flex-col items-center pt-3">
           <img
             src={hypeLogo}
@@ -35,7 +35,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
             className="h-12 w-12 scale-110 object-contain"
           />
 
-          <aside className="relative mt-8 flex w-full min-h-0 flex-1 flex-col items-center rounded-r-[28px] bg-gradient-to-b from-[#69baa7] via-[#4aa590] to-[#2f8f7b] py-5 shadow-[0_20px_50px_rgba(18,96,79,0.32)]">
+          <aside className="relative mt-8 flex w-full min-h-0 flex-1 flex-col items-center rounded-r-[28px] bg-gradient-to-b from-[#69baa7] via-[#4aa590] to-[#2f8f7b] py-5">
             <nav className="relative z-10 mt-2 flex flex-1 flex-col items-center gap-3">
               {navItems.map((item) => {
                 const active = location.pathname === item.to;
@@ -65,9 +65,9 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
         </div>
 
         <div className="z-10 flex min-w-0 flex-1 flex-col gap-0 overflow-hidden">
-          <header className="relative flex h-[62px] shrink-0 items-center bg-white px-3 shadow-[0_10px_24px_rgba(15,23,42,0.06)] md:px-4">
+          <header className="relative flex h-[62px] shrink-0 items-center border-b border-slate-200 bg-[#f3f5f8] px-3 md:px-4">
             <p className="pointer-events-none absolute left-1/2 -translate-x-1/2 text-base font-semibold tracking-wide text-slate-800">
-              Movement Intelligence Platform
+              ᴍᴏᴠᴇᴍᴇɴᴛ ɪɴᴛᴇʟʟɪɢᴇɴᴄᴇ ᴘʟᴀᴛꜰᴏʀᴍ
             </p>
 
             <div className="ml-auto flex items-center gap-1.5 text-slate-700">
@@ -87,7 +87,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
             </div>
           </header>
 
-          <main className="min-h-0 flex-1 overflow-y-auto bg-white p-4 shadow-[0_20px_48px_rgba(15,23,42,0.07)] md:p-5">
+          <main className="min-h-0 flex-1 overflow-y-auto bg-[#f3f5f8] p-4 md:p-5">
             {children}
           </main>
         </div>
